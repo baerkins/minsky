@@ -1,11 +1,10 @@
-# Clean Slave
+# Minsky
 
-I abuse my computer: constantly installing things, never really cleaning up, failing
-to remember to repair disc permissions. On occasion, I try to make nice by treating
-the machine to a spa day - by wiping it entirely.
+![Minsky](http://content.forums.previously.tv/monthly_2017_05/fargo3e.jpg.b833b8f6b39ef66428945ec45e2050a2.jpg)
 
-On such an occastion, this repo provides a simple way to get back to basics in terms
-of the apps and scripts I need for development.
+I abuse my computer: constantly installing things, never really cleaning up, failing to remember to repair disc permissions. On occasion, I try to make nice by treating the machine to a spa day - by wiping it entirely.
+
+On such an occastion, this repo provides a simple way to get back to basics in terms of the apps and scripts I need for development.
 
 If this helps you, cool. If not, whatever. It's not your computer anyhow.
 
@@ -17,9 +16,12 @@ Open Terminal, run `git`. Install will take place.
 
 Create an ssh key: https://help.github.com/articles/generating-ssh-keys/
 
-Clone this repo to `dev/assets/github/clean-slave`.
+Clone this repo to `dev/assets/github/minksy`.
 ```
-cd ~/dev/assets/github/clean-slave
+mkdir -p ~/dev/assets/github
+cd ~/dev/assets/github
+git clone https://github.com/iamhexcoder/minsky.git
+cd minksy
 ```
 
 
@@ -66,7 +68,7 @@ rm -r User
 ln -s ~/Dropbox/Shaun/Dev/Sublime/User
 ```
 
-Open Sublime and install [Package Control](https://packagecontrol.io/). In Sublime, press ``ctrl+``` and copy in:
+Open Sublime and install [Package Control](https://packagecontrol.io/). In Sublime, press `` ctrl + ` `` and copy in:
 ```
 import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 ```
@@ -81,10 +83,10 @@ nvm alias default stable
 ```
 
 ## NPM
-Install [Gulp](http://gulpjs.com/), [Bower](http://bower.io/):
+Install [Gulp](http://gulpjs.com/), [Browsersync](https://www.browsersync.io/):
 ```
 npm install --global gulp
-npm install -g bower
+npm install -g browser-sync
 ```
 
 ## Composer
@@ -92,6 +94,12 @@ Install [Composer](https://getcomposer.org):
 ```
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
+```
+
+## XCode CLI Tools
+Install XCode CLI Tools:
+```
+xcode-select --install
 ```
 
 
