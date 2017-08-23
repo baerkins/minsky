@@ -16,15 +16,16 @@ brew update
 packages=(
   nvm
   ffmpeg
+  hub
+  git-flow
 )
 
 echo "INSTALLING BINARIES..."
 brew install ${packages[@]}
 
-
-
 # Cleanup after yourself
 brew cleanup
+
 
 # Install Applications
 # --------------------
@@ -119,6 +120,13 @@ echo "INSTALLING COMPOSER..."
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
+# WP CLI
+# ------
+echo "INSTALLING WORDPRESS CLI..."
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+mv wp-cli.phar /usr/local/bin/wp
+
 
 # XCode CLI Tools
 # ---------------
@@ -132,5 +140,6 @@ if [ $? -ne 0 ]; then
 else
   echo "XCODE CLI TOOLS OK"
 fi
+
 
 
