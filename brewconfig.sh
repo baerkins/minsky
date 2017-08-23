@@ -3,7 +3,7 @@
 # Check for Homebrew,
 # Install if we don't have it
 if test ! $(which brew); then
-  echo "Installing homebrew..."
+  echo "INSTALLING HOMEBREW..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -18,7 +18,7 @@ packages=(
   ffmpeg
 )
 
-echo "installing packages..."
+echo "INSTALLING BINARIES..."
 brew install ${packages[@]}
 
 
@@ -39,23 +39,24 @@ brew tap caskroom/versions
 apps=(
   google-chrome
   firefox
-  mamp
-  sequel-pro
   atom
   sublime-text3
+  mamp
+  sequel-pro
   transmit
   slack
   dropbox
-  google-drive
   appcleaner
   transmission
   adobe-creative-cloud
   sip
+  google-backup-and-sync
+  cloudapp
 )
 
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
-echo "installing apps..."
+echo "INSTALLING APPLICATIONS..."
 brew cask install --appdir="/Applications" ${apps[@]}
 
 
@@ -71,10 +72,12 @@ fonts=(
   font-dejavu-sans
   font-montserrat
   font-merriweather
+  font-fira-mono
+  font-fontawesome
 )
 
 # install fonts
-echo "installing fonts..."
+echo "INSTALLING FONTS..."
 brew cask install ${fonts[@]}
 
 
@@ -82,7 +85,7 @@ brew cask install ${fonts[@]}
 # ------------
 #
 # Copy Bash Profile
-echo "setting up bash_profile..."
+echo "SETTING UP BASH PROFILE..."
 cp -i .bash_profile ~/.bash_profile
 
 # Setup for NVM alias
@@ -99,32 +102,35 @@ source ~/.bash_profile
 # ---------------
 #
 # Install Node v5.0, set it to default
-echo "installing node.js..."
+echo "INSTALLING NODE.JS..."
 nvm install v6.11.1 && nvm alias default v6.11.1
 
 # Install Gulp and Bower
-echo "installing npm modules..."
-npm install -g gulp && npm install -g browser-sync
+echo "INSTALLING GLOBAL NPM MODULES..."
+npm install -g gulp
+npm install -g browser-sync
+npm install -g grunt-cli
+npm install -g npm-check-updates
 
 
 # Composer
 # --------
-echo "installing composer..."
+echo "INSTALLING COMPOSER..."
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
 
 # XCode CLI Tools
 # ---------------
-echo "checking xcode CLI tools..."
+echo "CHECKING XCODE CLI TOOLS..."
 # Only run if the tools are not installed yet
 # To check that try to print the SDK path
 xcode-select -p &> /dev/null
 if [ $? -ne 0 ]; then
-  echo "installing xcode cli tools..."
+  echo "INSTALLING XCODE CLI TOOLS..."
   xcode-select --install
 else
-  echo "xcode CLI tools ok"
+  echo "XCODE CLI TOOLS OK"
 fi
 
 
